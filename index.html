@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sukhman Kaur — Data & Policy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --ink: #12203a;
+    --ink-soft: #3b4a63;
+    --paper: #f6f4ee;
+    --paper-line: #dcd7c8;
+    --gold: #a9822f;
+    --gold-deep: #7c5e1f;
+    --ok-green: #3f5b45;
+    --max-w: 880px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+
+  /* subtle graph-paper texture */
+  body{
+    background-image:
+      linear-gradient(var(--paper-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: -1px -1px;
+  }
+
+  a{color:var(--gold-deep);}
+
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 24px;}
+
+  /* HERO */
+  header.hero{
+    padding: 96px 0 72px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--gold-deep);
+    display:inline-block;
+  }
+  h1{
+    font-family:'Source Serif 4', serif;
+    font-weight:700;
+    font-size: clamp(38px, 6vw, 58px);
+    line-height:1.08;
+    margin:0 0 20px;
+    letter-spacing:-0.01em;
+  }
+  h1 em{
+    font-style:italic;
+    color: var(--gold-deep);
+  }
+  .lede{
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:620px;
+    margin:0 0 30px;
+  }
+  .meta-row{
+    display:flex; flex-wrap:wrap; gap:10px 28px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .meta-row span::before{content:"— ";}
+
+  /* SECTION LABELS */
+  .section{padding: 64px 0;}
+  .section + .section{border-top:1px solid var(--paper-line);}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:36px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono', monospace;
+    color: var(--gold-deep);
+    font-size:13px;
+  }
+  h2{
+    font-family:'Source Serif 4', serif;
+    font-size:28px;
+    margin:0;
+    font-weight:600;
+  }
+
+  /* PROJECT CARDS — case file tabs */
+  .file{
+    position:relative;
+    background:#fffdf8;
+    border:1px solid var(--ink);
+    margin-bottom:28px;
+    padding: 28px 28px 26px;
+  }
+  .file::before{
+    content: attr(data-tab);
+    position:absolute;
+    top:-13px; left:24px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    padding:4px 10px;
+    text-transform:uppercase;
+  }
+  .file h3{
+    font-family:'Source Serif 4', serif;
+    font-size:22px;
+    margin: 6px 0 10px;
+  }
+  .file p.desc{
+    margin:0 0 14px;
+    color:var(--ink-soft);
+  }
+  .file ul{
+    margin:0 0 16px;
+    padding-left:18px;
+    color:var(--ink-soft);
+    font-size:15px;
+  }
+  .file ul li{margin-bottom:6px;}
+  .file .finding{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    background:var(--paper);
+    border-left:3px solid var(--gold);
+    padding:10px 14px;
+    color:var(--ink);
+    margin-bottom:16px;
+  }
+  .file-links{
+    display:flex; gap:18px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+  }
+  .file-links a{text-decoration:none; border-bottom:1px solid var(--gold-deep);}
+  .file-links a:hover{color:var(--ink);}
+
+  /* RESEARCH */
+  .research{
+    background:#fffdf8;
+    border:1px solid var(--ink);
+    padding:28px;
+  }
+  .research h3{
+    font-family:'Source Serif 4', serif;
+    font-size:20px;
+    margin:0 0 4px;
+  }
+  .research .role-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--gold-deep);
+    margin-bottom:16px;
+    display:block;
+  }
+  .research ul{margin:0; padding-left:18px; color:var(--ink-soft);}
+  .research ul li{margin-bottom:8px;}
+
+  /* SKILLS */
+  .skills-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+  .skill-block .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    display:block;
+    margin-bottom:8px;
+  }
+  .skill-block .items{
+    font-size:15px;
+    color:var(--ink);
+  }
+
+  /* CONTACT / FOOTER */
+  footer{
+    padding: 56px 0 72px;
+    border-top:2px solid var(--ink);
+  }
+  footer h2{margin-bottom:14px;}
+  .contact-line{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:15px;
+  }
+  .contact-line a{margin-right:22px;}
+  .stamp{
+    margin-top:40px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    letter-spacing:0.06em;
+  }
+
+  @media (max-width:600px){
+    header.hero{padding:64px 0 48px;}
+    .section{padding:48px 0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Case File — Open</div>
+    <h1>Sukhman Kaur<br>data, read for <em>policy</em>.</h1>
+    <p class="lede">Data Science &amp; Analytics student at UC Merced, headed to the UC Washington DC Program this fall. I build the kind of analysis that's meant to hold up under questioning — the kind policy work actually needs.</p>
+    <div class="meta-row">
+      <span>B.A. Data Science &amp; Analytics, Business Emphasis — UC Merced</span>
+      <span>Graduating Dec 2026</span>
+      <span>Central Valley, CA</span>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Exhibits</h2>
+      <span class="section-num">01 / SELECTED WORK</span>
+    </div>
+
+    <article class="file" data-tab="Exhibit A — Applied Systems">
+      <h3>Faculty Meeting Scheduler</h3>
+      <p class="desc">A reactive R/Shiny application built for UC Merced's capstone program, designed to solve an actual scheduling bottleneck for faculty.</p>
+      <ul>
+        <li>Color-coded calendar UI with department/subject filters and a multi-instructor sidebar</li>
+        <li>Cleaned data pipeline integrated directly into reactive front-end logic</li>
+        <li>Deployed live for real use, not just a class demo</li>
+      </ul>
+      <div class="file-links">
+        <a href="https://ucm-dsa-capstone.shinyapps.io/faculty-meeting-scheduler/" target="_blank">Live App →</a>
+      </div>
+    </article>
+
+    <article class="file" data-tab="Exhibit B — Market Data">
+      <h3>S&amp;P 500 Valuation Analysis</h3>
+      <p class="desc">A regression study testing whether the Shiller PE Ratio (PE10) holds up as a predictor of long-run, inflation-adjusted market prices.</p>
+      <ul>
+        <li>1,768 monthly observations spanning 1871–2018</li>
+        <li>Validated normality and homoscedasticity assumptions via residual diagnostics</li>
+      </ul>
+      <div class="finding">Finding — PE10 explains 58% of variance in real market prices (R² = 0.58, p &lt; 2e-16)</div>
+      <div class="file-links">
+        <a href="https://github.com/Sukhmank5/Data-analysis-optimization-R" target="_blank">Repository →</a>
+      </div>
+    </article>
+
+    <article class="file" data-tab="Exhibit C — Public Health Data">
+      <h3>COVID-19 Global Data Analysis</h3>
+      <p class="desc">A comparative look at case trends and mortality rates across countries during the pandemic, built to surface cross-national patterns rather than a single-country story.</p>
+      <ul>
+        <li>Visualized case and mortality trends across India, the United States, and Brazil</li>
+        <li>Built entirely in R using ggplot2</li>
+      </ul>
+      <div class="file-links">
+        <a href="https://github.com/Sukhmank5/covid-analysis-r" target="_blank">Repository →</a>
+      </div>
+    </article>
+
+    <article class="file" data-tab="Exhibit D — Survey Data">
+      <h3>Mental Health Awareness Dashboard</h3>
+      <p class="desc">An interactive Shiny dashboard built on real survey data, tracking mental health trends among U.S. college-aged individuals.</p>
+      <ul>
+        <li>Explores patterns across demographics and risk factors for ages 18–25</li>
+        <li>Designed for a non-technical audience to explore the data themselves</li>
+      </ul>
+      <div class="file-links">
+        <a href="https://github.com/Sukhmank5/Mental-Health" target="_blank">Repository →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Research Record</h2>
+      <span class="section-num">02 / BACKGROUND</span>
+    </div>
+    <div class="research">
+      <h3>Core Research Fellow</h3>
+      <span class="role-meta">University of California, Merced — Sep 2025 to May 2026</span>
+      <ul>
+        <li>Conducted computational data analysis on prion protein-membrane interactions to identify structural deformation patterns</li>
+        <li>Designed and executed a qualitative research study on student success and equity initiatives</li>
+        <li>Collaborated with faculty mentors and peers throughout all phases of the research process</li>
+        <li>Presented original findings at a university-wide research showcase</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Tools of Record</h2>
+      <span class="section-num">03 / SKILLS</span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <span class="label">Languages</span>
+        <div class="items">Python, R, SQL, Java, Stata</div>
+      </div>
+      <div class="skill-block">
+        <span class="label">Analysis</span>
+        <div class="items">Regression, hypothesis testing, qualitative coding, time series</div>
+      </div>
+      <div class="skill-block">
+        <span class="label">Visualization</span>
+        <div class="items">ggplot2, Tableau, R Shiny</div>
+      </div>
+      <div class="skill-block">
+        <span class="label">Tools</span>
+        <div class="items">Excel, JupyterHub, Qualtrics, Google Workspace</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <div class="contact-line">
+      <a href="mailto:sukhman6784@gmail.com">sukhman6784@gmail.com</a>
+      <a href="https://linkedin.com/in/sukhman-kaur" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Sukhmank5" target="_blank">GitHub</a>
+    </div>
+    <div class="stamp">Filed from Central Valley, CA — En route to Washington, D.C., Fall 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
